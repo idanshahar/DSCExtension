@@ -1,3 +1,4 @@
+[DscLocalConfigurationManager()]
 Configuration ScriptTest
 {
     Import-DscResource –ModuleName 'PSDesiredStateConfiguration'

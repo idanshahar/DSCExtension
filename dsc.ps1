@@ -1,8 +1,7 @@
 [DscLocalConfigurationManager()]
 Configuration ScriptTest
 {
-    Import-DscResource –ModuleName 'PSDesiredStateConfiguration'
-
+    Import-DSCResource –ModuleName PSDesiredStateConfiguration
     Script ScriptExample
     {
         SetScript =

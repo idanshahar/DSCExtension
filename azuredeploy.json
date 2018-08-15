@@ -49,7 +49,11 @@
       "metadata": {
         "description": "The sasToken required to access _artifactsLocation. When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
       }
-    }
+    },
+    "dsclocation": {
+        "defaultValue": "https://dsc2123.blob.core.windows.net/test/dsc.ps1.zip?sp=r&st=2018-08-14T20:42:01Z&se=2018-08-15T04:42:01Z&spr=https&sv=2017-11-09&sig=kOWsO7uMgb0bc7%2FYYPQaEsUrYPYRfmuc2g4gzMUPdsE%3D&sr=b",
+        "type": "string"
+      }
   },
   "variables": {
     "vnetName": "vnet",
@@ -132,33 +136,16 @@
           "extensionProfile": {
             "extensions": [
               {
-                "name": "customScript",
-                "properties": {
-                  "publisher": "Microsoft.Compute",
-                  "settings": {
-                    "fileUris": [
-                      "[concat(parameters('_artifactsLocation'), '/scripts/helloWorld.ps1')]"
-                    ]
-                  },
-                  "typeHandlerVersion": "1.8",
-                  "autoUpgradeMinorVersion": true,
-                  "protectedSettings": {
-                    "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File helloWorld.ps1"
-                  },
-                  "type": "CustomScriptExtension"
-                }
-              },
-              {
                 "name": "Microsoft.Powershell.DSC",
                 "properties": {
                     "publisher": "Microsoft.Powershell",
                     "type": "DSC",
-                    "typeHandlerVersion": "2.20",
-                    "autoUpgradeMinorVersion": false,
-                    "forceUpdateTag": "1.0",
+                    "typeHandlerVersion": "2.73",
+                    "autoUpgradeMinorVersion": true,
+                    "forceUpdateTag": "2.5.asfdas",
                     "settings": {
                         "configuration": {
-                            "url": "https://github.com/idanshahar/DSCExtension/blob/master/dsc.ps1.zip",
+                            "url": "https://dsc2123.blob.core.windows.net/test/dsc.ps1.zip?sp=r&st=2018-08-14T20:42:01Z&se=2018-08-15T04:42:01Z&spr=https&sv=2017-11-09&sig=kOWsO7uMgb0bc7%2FYYPQaEsUrYPYRfmuc2g4gzMUPdsE%3D&sr=b",
                             "script": "dsc.ps1",
                             "function": "ScriptTest"
                         },
@@ -167,7 +154,8 @@
                         }
                     }
                 }
-            }              
+              }
+
             ]
           }
         }
